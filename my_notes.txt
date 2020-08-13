@@ -1,0 +1,3 @@
+=> receive files (photo, description)
+=> add form validations
+=> write custom form builder

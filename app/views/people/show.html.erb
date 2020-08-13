@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person.email %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @person.birthday %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @person.country %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @person.rating %>
+</p>
+
+<p>
+  <strong>Photo:</strong><br>
+  <% if @person.has_photo? %>
+    <%= image_tag @person.photo_path %>
+    <%# this is a photo %>
+  <% else %>
+    No photo.
+  <% end %>
+</p>
+
+<p>
+  <strong>Description:</strong><br>
+  <% if @person.has_desc? %>
+    <%# image_tag @person.photo_path %>
+    <object data=<%= @person.desc_path %> type="text/plain"><a href=<%= @person.desc_path %>>Description</a></object>
+  <% else %>
+    No description
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

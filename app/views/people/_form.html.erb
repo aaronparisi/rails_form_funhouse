@@ -1,0 +1,61 @@
+<%= form_with(model: person, local: true, multipart: true) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday %>
+    <%= form.date_select :birthday %>
+  </div>
+
+  <div class="field">
+    <%= gen_list_selector(:person, :country, @person.class::NATIONS) %>
+  </div>
+
+  <div class="field">
+    <%= field_set_tag 'Rating' do %>
+      <%= form.radio_button :rating, 1 %><%= form.label :rating, 1 %>
+      <%= form.radio_button :rating, 2 %><%= form.label :rating, 2 %>
+      <%= form.radio_button :rating, 3 %><%= form.label :rating, 3 %>
+      <%= form.radio_button :rating, 4 %><%= form.label :rating, 4 %>
+      <%= form.radio_button :rating, 5 %><%= form.label :rating, 5 %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subscribe_to_emails %> 
+    <%= form.check_box :subscribe_to_emails %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.file_field :photo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc  %>
+    <%= form.file_field :desc %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
